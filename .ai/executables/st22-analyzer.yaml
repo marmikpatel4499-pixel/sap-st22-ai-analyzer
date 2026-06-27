@@ -4,9 +4,9 @@ metadata:
   name: st22-analyzer
   annotations:
     scenarios.ai.sap.com/name: "SAP ST22 AI Analyzer"
-    scenarios.ai.sap.com/description: "Analyze SAP ST22 dump text using GenAI"
+    scenarios.ai.sap.com/description: "Simple SAP AI Core test"
     executables.ai.sap.com/name: "st22-analyzer"
-    executables.ai.sap.com/description: "Static text file ST22 analyzer"
+    executables.ai.sap.com/description: "Simple echo execution"
   labels:
     scenarios.ai.sap.com/id: "sap-st22-ai-analyzer"
     ai.sap.com/version: "1.0"
@@ -15,12 +15,14 @@ spec:
   templates:
     - name: main
       container:
-        image: docker.io/YOUR_DOCKERHUB_USERNAME/sap-st22-ai-analyzer:latest
-        command: ["python"]
-        args: ["analyze_dump.py"]
-        env:
-          - name: GEMINI_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: gemini-secret
-                key: GEMINI_API_KEY
+        image: python:3.12
+        command:
+          - sh
+          - -c
+        args:
+          - |
+            echo "SAP AI Core is Working!"
+            echo "Version : 1.0.0"
+            echo "Executable : Analyze ST22"
+            echo "Workflow : SAP Log Reader"
+            echo "Execution completed successfully"
