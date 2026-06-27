@@ -1,0 +1,27 @@
+Runtime Errors         MESSAGE_TYPE_X
+ABAP Program           ZST_TEST_DUMP
+Application Component  BC-ABA-LA
+
+Short Text
+The current application triggered a termination with MESSAGE_TYPE_X.
+
+What happened?
+The ABAP program "ZST_TEST_DUMP" was terminated because it executed MESSAGE X.
+
+Error analysis
+MESSAGE_TYPE_X happens when ABAP code intentionally terminates the program using MESSAGE TYPE X.
+
+Source Code Extract
+
+35 DATA lv_value TYPE i.
+36 lv_value = 0.
+37
+38 IF lv_value = 0.
+39 MESSAGE x001(zmsg) WITH 'Invalid value found'.
+40 ENDIF.
+
+Trigger Location
+
+Program ZST_TEST_DUMP
+
+Line 39
