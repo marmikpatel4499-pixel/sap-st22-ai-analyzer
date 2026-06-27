@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: st22-analyzer
+  annotations:
+    scenarios.ai.sap.com/name: "SAP ST22 AI Analyzer"
+    scenarios.ai.sap.com/description: "Analyze SAP ST22 dump text using GenAI"
+    executables.ai.sap.com/name: "st22-analyzer"
+    executables.ai.sap.com/description: "Static text file ST22 analyzer"
+  labels:
+    scenarios.ai.sap.com/id: "sap-st22-ai-analyzer"
+    ai.sap.com/version: "1.0"
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      container:
+        image: docker.io/YOUR_DOCKERHUB_USERNAME/sap-st22-ai-analyzer:latest
+        command: ["python"]
+        args: ["analyze_dump.py"]
+        env:
+          - name: GEMINI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: gemini-secret
+                key: GEMINI_API_KEY

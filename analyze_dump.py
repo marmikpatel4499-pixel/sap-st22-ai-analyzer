@@ -1,10 +1,11 @@
+import os
 from google import genai
 
 # ================================
 # Paste your Gemini API Key below
 # ================================
 client = genai.Client(
-    api_key="YOUR_GEMINI_API_KEY"
+    api_key=os.getenv("GEMINI_API_KEY")
     )
 
 # ================================
